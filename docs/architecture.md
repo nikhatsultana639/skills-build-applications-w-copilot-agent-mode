@@ -28,13 +28,13 @@ OctoFit Tracker is a three-tier application for a school fitness program. The st
 
 ## Implementation decisions
 
-- **Presentation tier:** Keep React pages responsible for rendering and interaction, using the shared API client for relative `/api` requests. Each capability should show an accessible loading state, meaningful empty state, and accessible error state.
-- **Logic tier:** Keep request validation and capability behavior in Express routes/services. Return deliberate 4xx responses for invalid input or missing records, and keep persistence details out of the presentation tier.
-- **Data tier:** Use Mongoose models for persisted shape and required-field validation. Keep seed data representative and idempotent without deleting unrelated records.
-- **Activity tracking:** Validate the activity fields and well-formed IDs, confirm the referenced user and team exist, then save the user, team, type, and minutes with server-computed points and occurrence time.
-- **Team management:** Require a name, preserve submitted name and mascot, and persist the supplied members through the team model.
-- **Leaderboard:** Aggregate activity points by team, order totals descending, and return each team name, total points, and a 1-based rank.
-- **Workout suggestions:** Find the user by email, use their goal and recent activity to choose a matching workout, and include a reason. Return a deliberate 4xx when no user matches.
+- Presentation tier decision: Keep React pages responsible for rendering and interaction, using the shared API client for relative `/api` requests. Each capability should show an accessible loading state, meaningful empty state, and accessible error state.
+- Logic tier decision: Keep request validation and capability behavior in Express routes/services. Return deliberate 4xx responses for invalid input or missing records, and keep persistence details out of the presentation tier.
+- Data tier decision: Use Mongoose models for persisted shape and required-field validation. Keep seed data representative and idempotent without deleting unrelated records.
+- Activity tracking approach: Validate the activity fields and well-formed IDs, confirm the referenced user and team exist, then save the user, team, type, and minutes with server-computed points and occurrence time.
+- Team management approach: Require a name, preserve submitted name and mascot, and persist the supplied members through the team model.
+- Leaderboard approach: Aggregate activity points by team, order totals descending, and return each team name, total points, and a 1-based rank.
+- Workout suggestions approach: Find the user by email, use their goal and recent activity to choose a matching workout, and include a reason. Return a deliberate 4xx when no user matches.
 
 ## Test plan
 
